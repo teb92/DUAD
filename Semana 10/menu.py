@@ -1,10 +1,8 @@
 import csv
-from menu_options.add_student import add_new_student, students 
-from menu_options.review_students_list import read_students_from_variable
-from menu_options.export_csv import export_students_to_csv
-from menu_options.show_the_top_3_students import show_top_3_students
-from menu_options.show_average_grade_of_all import show_all_average
-from menu_options.read_new_csv import select_file, read_csv_file
+
+from data import select_file, read_csv_file, export_students_to_csv
+from actions import add_new_student, read_students_from_variable, show_all_average, show_top_3_students, students
+
 
 
 
@@ -42,5 +40,5 @@ def menu():
     except ValueError:
         print("That is not a number! Please select a number between 1 to 7.")
         input("\nPress Enter to return to continue...")
-    return True  # Continue signal
+    return True 
 
