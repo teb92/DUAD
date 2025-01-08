@@ -16,6 +16,7 @@ def menu():
         print("5 - Export information to a new CSV file")
         print("6 - Import information from from a previous CSV file")
         print("7 - Exit")
+        
         menu_option = int(input("Select a menu option (1 to 7): "))
         if menu_option == 1:
             add_new_student()

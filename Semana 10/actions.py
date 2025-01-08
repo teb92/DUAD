@@ -2,7 +2,6 @@ import csv
 students = []
 
 
-
 def add_new_student():
     while True:
         name = input("Enter Name: ")

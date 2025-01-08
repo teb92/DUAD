@@ -24,6 +24,7 @@ def export_students_to_csv(students):
         except Exception as e:
             print(f"An error occurred while exporting to CSV: {e}")
         
+        
 def read_csv_file(file_path):
     try:
         with open(file_path, 'r') as file:
