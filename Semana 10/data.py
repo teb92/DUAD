@@ -1,9 +1,6 @@
 import csv
-
 from actions import students
-from tkinter import Tk
-from tkinter.filedialog import askopenfilename
-from tkinter import messagebox
+
 
 def export_students_to_csv(students):
     if not students:
@@ -25,34 +22,28 @@ def export_students_to_csv(students):
             print(f"An error occurred while exporting to CSV: {e}")
         
         
-def read_csv_file(file_path):
+
+
+def read_csv_file():
+    nombre_archivo = input("Por favor, ingresa el nombre del archivo CSV (incluyendo la extensión '.csv'): ")
     try:
-        with open(file_path, 'r') as file:
-            reader = csv.DictReader(file) 
+        with open(nombre_archivo, 'r') as file:
+            reader = csv.DictReader(file)
             for row in reader:
                 student_data = {
-                    'name': row['name'],
-                    'last_name': row['last_name'],
-                    'section': row['section'],
-                    'grade_spanish': row['grade_spanish'],
-                    'grade_english': row['grade_english'],
-                    'grade_socials': row['grade_socials'],
-                    'grade_science': row['grade_science'],
-                }
+                        'name': row['name'],
+                        'last_name': row['last_name'],
+                        'section': row['section'],
+                        'grade_spanish': row['grade_spanish'],
+                        'grade_english': row['grade_english'],
+                        'grade_socials': row['grade_socials'],
+                        'grade_science': row['grade_science'],
+                    }
                 students.append(student_data)
                 print(f"Added student: {student_data}")  
-        input("\nPress Enter to return to continue...")  
+        input("\nPress Enter to continue...")
     except Exception as e:
         print(f"An error occurred while reading the file: {e}")
-        input("\nPress Enter to return to continue...") 
-
-def select_file():
-    Tk().withdraw()
-    file_path = askopenfilename(filetypes=[("CSV files", "*.csv")]) 
-    if not file_path:
-        messagebox.showinfo("No file selected", "No file was selected. Exiting the program.")
-        return None
-    return file_path
-
+        input("\nPress Enter to return to main menu...") 
 
 

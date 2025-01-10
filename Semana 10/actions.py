@@ -80,27 +80,27 @@ def show_all_average(students):
         print("No students have been registered yet.")
         input("\nPress Enter to return to the main menu...")
         return
+    total_averages = []
 
-    averages = {}
+    # Procesar cada estudiante
     for student in students:
-        try:
             grade_spanish = float(student['grade_spanish'])
             grade_english = float(student['grade_english'])
             grade_socials = float(student['grade_socials'])
             grade_science = float(student['grade_science'])
-        except (ValueError, KeyError) as e:
-            print(f"Error: Invalid or missing data for {student.get('name', 'Unknown')} {student.get('last_name', 'Unknown')}.")
-            input("\nPress Enter to return to the main menu...")
-            continue
-        
-        average = (grade_spanish + grade_english + grade_socials + grade_science) / 4
-        
-        student_name = f"{student.get('name', 'Unknown')} {student.get('last_name', 'Unknown')}"
-        averages[student_name] = {'average': average}
-    
-    
-    for name, person in averages.items():
-        print(f"{name}: {person['average']}")
+            
+            average = (grade_spanish + grade_english + grade_socials + grade_science) / 4
+            
+            total_averages.append(average)
+    # Cálculo del promedio total
+    count = len(total_averages)
+    if count > 0:
+        final_result = sum(total_averages)
+        overall_average = final_result / count
+        print(f"Promedio general de los estudiantes: {overall_average:.2f}")
+    else:
+        print("\nNo se encontraron promedios válidos para calcular.")
+
     input("\nPress Enter to return to the main menu...")
     
 def show_top_3_students(students):

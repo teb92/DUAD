@@ -1,6 +1,6 @@
 import csv
 
-from data import select_file, read_csv_file, export_students_to_csv
+from data import read_csv_file, read_csv_file, export_students_to_csv
 from actions import add_new_student, read_students_from_variable, show_all_average, show_top_3_students, students
 
 
@@ -29,9 +29,7 @@ def menu():
         elif menu_option == 5:
             export_students_to_csv(students)
         elif menu_option == 6:
-            file_path = select_file() 
-            if file_path:
-                read_csv_file(file_path)
+            read_csv_file()
         elif menu_option == 7:
             print("Bye!")
             return False  
