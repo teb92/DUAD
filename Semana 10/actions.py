@@ -10,25 +10,37 @@ def add_new_student():
         while True:
             try:
                 grade_spanish = int(input("Introduce spanish grade: "))
-                break
+                if 0 <= grade_spanish <= 100:
+                    break
+                else:
+                    print("The number must be between 0 and 100. Please try again.")
             except ValueError:
                 print("Please introduce only numbers")
         while True:
             try:
                 grade_english = float(input("Introduce english grade: "))
-                break
+                if 0 <= grade_english <= 100:
+                    break
+                else:
+                    print("The number must be between 0 and 100. Please try again.")
             except ValueError:
                 print("Please introduce only numbers")
         while True:
             try:
                 grade_socials = float(input("Introduce socials grade: "))
-                break
+                if 0 <= grade_socials <= 100:
+                    break
+                else:
+                    print("The number must be between 0 and 100. Please try again.")
             except ValueError:
                 print("Please introduce only numbers")
         while True:
             try:
                 grade_science = float(input("Introduce science grade: "))
-                break
+                if 0 <= grade_science <= 100:
+                    break
+                else:
+                    print("The number must be between 0 and 100. Please try again.")
             except ValueError:
                 print("Please introduce only numbers")
                 
