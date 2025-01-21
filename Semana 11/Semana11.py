@@ -9,8 +9,16 @@ class Circle():
     def get_area(self):
         circle_area = math.pi * (self.radius ** 2)
         print(f'The area of the circle is {circle_area}')
-        
-radius_request = int(input("Add the radius of the circle: "))
+while True:
+    try:        
+        radius_request = float(input("Add the radius of the circle: "))
+        if radius_request <= 0:
+            print("Please add only positive numbers and grader than 0")
+        else:
+            break
+    except ValueError:
+        print("Please add only numbers")
+
 circle_area_1 = Circle(radius_request)
 circle_area_1.get_area()
 
@@ -22,44 +30,42 @@ circle_area_1.get_area()
 # Sino, debe mostrar un mensaje de que el bus está lleno.
 # Un método para bajar pasajeros uno por uno (en cualquier orden).
 
+class Person:
+    def __init__(self, name):
+        self.name = name  
 class Bus():
-    def __init__(self, max_passengers):
-        self.max_passengers = max_passengers
-        self.current_count = 0 
+    def __init__(self):
+        self.max_passengers = 3
+        self.passengers = []
         
-    def contador_de_pasajeros(self):
-        while True:
-            try:
-                print("\nDesea entrar, salir o terminar el programa?")
-                entrar_o_salir = int(input("Para entrar digite 1, para salir digite 2, para salir del programa digite 0: "))
-                
-                if entrar_o_salir == 1:
-                    if self.current_count < self.max_passengers:
-                        print("\nPuede abordar")
-                        self.current_count += 1
-                    else:
-                        print("\nAutobús lleno")
+    def agregar_pasajeros(self, person):
+        if len(self.passengers) < self.max_passengers:
+            self.passengers.append(person)
+            print(f"{person.name} ha subido al autobús.")
+        else:
+            print("El bus esta lleno.")
+    def bajar_persona(self, person):
+        if person in self.passengers:
+            self.passengers.remove(person)
+            print(f"{person.name} ha bajado al autobús.")
+        else:
+            print("El pasajero no esta en el bus o este esta vacio")
+persona1 = Person("Juan")
+persona2 = Person("Ana")
+persona3 = Person("Carlos")
+persona4 = Person("Lucía")
 
-                elif entrar_o_salir == 2:
-                    if self.current_count > 0:
-                        print("\nBajando")
-                        self.current_count -= 1
-                        print(f"Pasajeros actuales: {self.current_count}")
-                    else:
-                        print("Autobus vacio")
-                elif entrar_o_salir == 0:  # Terminar el programa
-                    print("\nSaliendo del programa...")
-                    break
-                
-                else:
-                    print("Por favor, ingresa solo 1, 2 o 0.")
-                    
-            except ValueError:
-                print("Por favor, ingresa solo 1 o 2.")
-                
-cantidad_pasajeros = int(input("De cuantos pasajeron es el bus?: "))
-my_bus = Bus(cantidad_pasajeros)
-my_bus.contador_de_pasajeros()
+bus = Bus()
+
+bus.agregar_pasajeros(persona1)
+bus.agregar_pasajeros(persona2)
+bus.agregar_pasajeros(persona3)
+bus.agregar_pasajeros(persona4)
+
+bus.bajar_persona(persona1)
+bus.bajar_persona(persona2)
+bus.bajar_persona(persona3)
+bus.bajar_persona(persona4)
 
 
 
