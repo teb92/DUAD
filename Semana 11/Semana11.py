@@ -8,7 +8,7 @@ class Circle():
         self.radius = radius
     def get_area(self):
         circle_area = math.pi * (self.radius ** 2)
-        print(f'The area of the circle is {circle_area}')
+        return circle_area
 while True:
     try:        
         radius_request = float(input("Add the radius of the circle: "))
@@ -20,7 +20,7 @@ while True:
         print("Please add only numbers")
 
 circle_area_1 = Circle(radius_request)
-circle_area_1.get_area()
+print(circle_area_1.get_area()) 
 
 
 # Cree una clase de Bus con:
