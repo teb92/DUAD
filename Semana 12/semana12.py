@@ -116,28 +116,17 @@ class Rectangle(Shape):
 
 # 3. Investigue qué usos se le pueden dar a la herencia multiple y cree un ejemplo.
 
-class Humano:
-    def __init__(self, nombre, altura, edad):
-        self.nombre = nombre
-        self.altura = altura  # en metros
-        self.edad = edad 
+class Talk:
+    def talk(self, message):
+        print(message)
+class Move:
+    def move(self, direction):
+        print(direction)
         
-class Hombre(Humano):
-    def __init__(self, nombre, altura, edad):
-        super().__init__(nombre, altura, edad)
-    def detalle_genero(self):
-        print (f"Hola, me llamo {self.nombre}, mido {self.altura} metros y tengo {self.edad} años.")
-        print("Soy Hombre")
-class Mujer(Humano):
-    def __init__(self, nombre, altura, edad):
-        super().__init__(nombre, altura, edad)
-    def detalle_genero(self):
-        print (f"Hola, me llamo {self.nombre}, mido {self.altura} metros y tengo {self.edad} años.")
-        print("Soy Mujer") 
-    
-hombre = Hombre("Carlos", 2.00, 34)
-mujer = Mujer("Laura", 1.65, 30)
-
-hombre.detalle_genero()
-mujer.detalle_genero()
-    
+class Robot(Talk, Move):
+    def start(self):
+        print("Starting the machine")
+        
+robot_1 = Robot()
+robot_1.talk("Hello! I'm a robot!!!")
+robot_1.move("I'm moving forward, get a out my way! haha!")
