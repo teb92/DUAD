@@ -22,9 +22,10 @@ sum(3, 5)
 
 def validate_numbers(func):
     def wrapper(a, b):
-        if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+        try:
+            isinstance(a, (int, float)) and isinstance(b, (int, float))
             return func(a, b)
-        else:
+        except TypeError:
             return "Both arguments must be numbers"
     return wrapper
 
@@ -58,11 +59,14 @@ class User:
 
 
 def check_adult_user(func):
-    def wrapper(user):
-        if user.age > 18:
-            return func(user)
-        else:
-            print(f"User with age {user.age} is not an adult")
+    def wrapper(*args, **kwargs):
+        try:
+            for arg in args:
+                if isinstance(arg, User) and arg.age < 18:
+                    raise Exception(f"User age {arg.age} is not an adult")
+            return func(*args, **kwargs)
+        except Exception as e:
+            print(f"Error: {e}")
     return wrapper
 
 
@@ -70,9 +74,8 @@ def check_adult_user(func):
 def greet_user(user):
     print(f"Hello, User! You are {user.age} years old.")
 
+adult_user = User(date(1990, 6, 15))
+not_adult_user = User(date(2010, 1, 1))  
 
-user1 = User(date(2010, 1, 1))  
-adult_user = User(date(1990, 6, 15)) 
-
-greet_user(user1)  
 greet_user(adult_user) 
+greet_user(not_adult_user)  
