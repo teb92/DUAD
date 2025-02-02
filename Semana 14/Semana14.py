@@ -69,7 +69,7 @@ class Queue:
             
     def push_right(self, value):
         new_node = Node(value)
-        if self.tail is None:  # Si la deque está vacía
+        if self.tail is None:  
             self.head = self.tail = new_node
         else:
             new_node.prev = self.tail
@@ -92,19 +92,19 @@ class Queue:
             print("empty queue.")
             return None
         removed_value = self.tail.value
-        self.tail = self.tail.prev  # Mover tail al nodo anterior
+        self.tail = self.tail.prev  
         if self.tail:
             self.tail.next = None
         else:
-            self.head = None  # Si la deque quedó vacía, actualizar head
+            self.head = None  
         return removed_value
 
     def print_queue(self):
         current = self.head
         while current:
-            print(current.value)  # Cada valor en una nueva línea
+            print(current.value) 
             current = current.next
-        print("---")  # Línea separadora para indicar el final de la deque
+        print("---")  
         
 queue = Queue()
 
