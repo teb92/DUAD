@@ -1,0 +1,14 @@
+transaction_type,category,amount
+expense,Food,5
+income,freelance,500
+expense,gaming,50
+expense,gaming,50
+expense,food,4500.0
+income,gaming,50.0
+income,freelance,123.0
+expense,food,100.0
+income,gaming,5000.0
+income,health,400.0
+expense,test,345.0
+income,test,123.0
+expense,Car,400.0
