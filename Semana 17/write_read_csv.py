@@ -1,3 +1,4 @@
+import PySimpleGUI as sg 
 import csv
 import os
 
@@ -38,11 +39,11 @@ def category_validation(category):
 
 def add_new_category(category):
     if category.lower() in allowed_categories:
-        print(f"Category '{category}' already exists.")
+        sg.popup(f"Category '{category}' already exists.")
     else:
         allowed_categories.add(category.lower())
         save_categories(allowed_categories)
-        print(f"Category '{category}' has been added successfully.")
+        sg.popup(f"Category '{category}' has been added successfully.") 
 
 
 def add_transaction(transaction_type, category, amount):
@@ -79,7 +80,7 @@ def read_csv_file():
             reader = csv.DictReader(file)
             for row in reader:
                 if row['transaction_type'] == "expense":
-                    expenses.append([row['category'], float(row['amount'])])
+                    expenses.append([row['transaction_type'].capitalize(), row['category'], float(row['amount'])])
                 elif row['transaction_type'] == "income":
-                    incomes.append([row['category'], float(row['amount'])])
+                    incomes.append([row['transaction_type'].capitalize(), row['category'], float(row['amount'])])
     return expenses, incomes
